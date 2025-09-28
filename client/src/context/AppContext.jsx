@@ -4,6 +4,7 @@ import { dummyUserData, dummyChats } from "../assets/assets";
 import axios from "axios";
 import toast from "react-hot-toast";
 
+// Removed: import { deleteChat } from "../../../server/src/controllers/chat.controller";
 
 axios.defaults.baseURL = import.meta.env.VITE_SERVER_URL;
 
@@ -75,7 +76,7 @@ const AppContextProvider = ({ children }) => {
           setSelectedChats(chatsData[0]);
         }
 
-        return chatsData; // Return for later check
+        return chatsData;
       } else {
         toast.error(data.message);
         return [];
@@ -102,7 +103,6 @@ const AppContextProvider = ({ children }) => {
       if (user) {
         const userChats = await fetchUserChats();
 
-        // Create a chat only if user has no chats
         if (userChats.length === 0) {
           await createNewChat();
         }
@@ -142,7 +142,7 @@ const AppContextProvider = ({ children }) => {
     token,
     setToken,
     axios,
-    deleteChat,
+    // Removed deleteChat
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
