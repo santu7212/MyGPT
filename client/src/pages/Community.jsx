@@ -7,16 +7,16 @@ const Community = () => {
   const [images, setImages] = useState([])
   const [loading, setLoading] = useState(true)
 
-  const { axios, token } = useAppContext() // ✅ get token from context
+  const { axios, token } = useAppContext() 
 
   const fetchImages = async () => {
     try {
       const { data } = await axios.get("/api/v1/users/get-images", {
-        headers: { Authorization: token } // ✅ include token
+        headers: { Authorization: token } 
       })
 
       if (data.success) {
-        setImages(data.data.images) // ✅ your ApiResponse wraps images inside data
+        setImages(data.data.images) 
       } else {
         toast.error(data.message)
       }
@@ -29,7 +29,7 @@ const Community = () => {
   }
 
   useEffect(() => {
-    if (token) fetchImages() // ✅ only fetch if token exists
+    if (token) fetchImages() 
   }, [token])
 
   if (loading) return <Loading/>

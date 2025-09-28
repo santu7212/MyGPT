@@ -32,11 +32,11 @@ const ChatBox = () => {
       const { data } = await axios.post(
         `/api/v1/messages/${mode}`,
         { chatId: selectedChats._id, prompt, isPublished },
-        { headers: { Authorization: token } } // ✅ fixed headers
+        { headers: { Authorization: token } } 
       );
 
       if (data.success) {
-        setMessages((prev) => [...prev, data.data]); // ✅ use data.data
+        setMessages((prev) => [...prev, data.data]); 
 
         // decrease credits
         if (mode === "image") {

@@ -20,7 +20,7 @@ const AppContextProvider = ({ children }) => {
 
   const [loadingUser, setLoadingUser] = useState(true);
 
-  // Fetch logged-in user data
+  
   const fetchUser = async () => {
     try {
       const { data } = await axios.get("/api/v1/users/data", {
@@ -38,7 +38,7 @@ const AppContextProvider = ({ children }) => {
     }
   };
 
-  // Create a new chat
+  
   const createNewChat = async () => {
     try {
       if (!user) return toast("Please Login to create a new chat");
@@ -61,7 +61,7 @@ const AppContextProvider = ({ children }) => {
     }
   };
 
-  // Fetch user chats
+  
   const fetchUserChats = async () => {
     try {
       const { data } = await axios.get("/api/v1/chats/get", {
@@ -87,7 +87,7 @@ const AppContextProvider = ({ children }) => {
     }
   };
 
-  // Handle theme
+
   useEffect(() => {
     if (theme === "dark") {
       document.documentElement.classList.add("dark");
@@ -97,7 +97,7 @@ const AppContextProvider = ({ children }) => {
     localStorage.setItem("theme", theme);
   }, [theme]);
 
-  // Initialize chats on login
+  
   useEffect(() => {
     const initChats = async () => {
       if (user) {
@@ -115,7 +115,7 @@ const AppContextProvider = ({ children }) => {
     initChats();
   }, [user, token]);
 
-  // Fetch user on token change
+  
   useEffect(() => {
     if (token) {
       fetchUser();
@@ -142,7 +142,7 @@ const AppContextProvider = ({ children }) => {
     token,
     setToken,
     axios,
-    // Removed deleteChat
+    
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
