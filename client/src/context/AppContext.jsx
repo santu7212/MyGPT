@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { dummyUserData, dummyChats } from "../assets/assets";
 import axios from "axios";
 import toast from "react-hot-toast";
-import { deleteChat } from "../../../server/src/controllers/chat.controller";
+
 
 axios.defaults.baseURL = import.meta.env.VITE_SERVER_URL;
 
